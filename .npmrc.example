@@ -1,0 +1,4 @@
+//npm.pkg.github.com/:_authToken=TOKEN
+@moradoapp:registry=https://npm.pkg.github.com
+
+engine-strict=true

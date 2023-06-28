@@ -1,0 +1,29 @@
+{
+  "name": "morado-metrics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MoradoApp/morado-metrics.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MoradoApp/morado-metrics/issues"
+  },
+  "homepage": "https://github.com/MoradoApp/morado-metrics#readme",
+  "dependencies": {
+    "@opentelemetry/auto-instrumentations-node": "^0.37.1",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.40.0",
+    "@opentelemetry/sdk-node": "^0.40.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.43.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1"
+  }
+}
