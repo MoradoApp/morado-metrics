@@ -10,24 +10,22 @@
 
   const SERVICE_NAME = process.env.APP_NAME || '';
   const SERVICE_ENVIRONMENT = process.env.ENVIRONMENT || '';
-  console.log('Initializing tracing...');
+  const METRICS = process.env.METRICS || '';
 
-  if (!SERVICE_NAME || !SERVICE_ENVIRONMENT) {
-    console.log('SERVICE_NAME and SERVICE_ENVIRONMENT must be set');
-    process.exit(1);
-  }
+  if (SERVICE_NAME && SERVICE_ENVIRONMENT && METRICS === 'true' ) {
+    console.log('Initializing tracing...');
 
-  const exporterOptions = {
-    url: 'http://182.100.0.35:4318/v1/traces'
-  }
+    const exporterOptions = {
+      url: 'http://182.100.0.35:4318/v1/traces' 
+    }
   
-  const traceExporter = new OTLPTraceExporter(exporterOptions);
-  const sdk = new opentelemetry.NodeSDK({
-    traceExporter,
-    instrumentations: [getNodeAutoInstrumentations()],
-    resource: new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: `${SERVICE_NAME}-${SERVICE_ENVIRONMENT}`,
-    })
+    const traceExporter = new OTLPTraceExporter(exporterOptions);
+    const sdk = new opentelemetry.NodeSDK({
+      traceExporter,
+      instrumentations: [getNodeAutoInstrumentations()],
+      resource: new Resource({
+        [SemanticResourceAttributes.SERVICE_NAME]: `${SERVICE_NAME}-${SERVICE_ENVIRONMENT}`,
+      })
     });
     
     // initialize the SDK and register with the OpenTelemetry API
@@ -41,3 +39,5 @@
       .catch((error) => console.log('Error terminating tracing', error))
       .finally(() => process.exit(0));
       });
+    
+}
