@@ -1,6 +1,6 @@
 {
   "name": "@moradoapp/morado-metrics",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Libreria para monitorear el estado de los servicios de morado.",
   "main": "index.js",
   "repository": {
