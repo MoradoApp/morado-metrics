@@ -1,17 +1,20 @@
 {
   "name": "morado-metrics",
   "version": "1.0.0",
-  "description": "",
+  "description": "Libreria para monitorear el estado de los servicios de morado.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MoradoApp/morado-metrics.git"
   },
-  "author": "",
-  "license": "ISC",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Morado <francisco.lopez@morado.app> (https://www.moradocolombia.com/)",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/MoradoApp/morado-metrics/issues"
   },
