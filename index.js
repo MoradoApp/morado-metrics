@@ -8,9 +8,14 @@
   const { Resource } = require('@opentelemetry/resources');
   const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
 
-  const SERVICE_NAME = process.env.SERVICE_NAME || 'nodejs-service';
-  const SERVICE_ENVIRONMENT = process.env.SERVICE_ENVIRONMENT || 'development';
+  const SERVICE_NAME = process.env.APP_NAME || '';
+  const SERVICE_ENVIRONMENT = process.env.ENVIRONMENT || '';
   console.log('Initializing tracing...');
+
+  if (!SERVICE_NAME || !SERVICE_ENVIRONMENT) {
+    console.log('SERVICE_NAME and SERVICE_ENVIRONMENT must be set');
+    process.exit(1);
+  }
 
   const exporterOptions = {
     url: 'http://182.100.0.35:4318/v1/traces'
