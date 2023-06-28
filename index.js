@@ -1,5 +1,6 @@
   // tracing.js
   'use strict'
+  require('dotenv').config();
   const process = require('process');
   const opentelemetry = require('@opentelemetry/sdk-node');
   const { getNodeAutoInstrumentations } = require('@opentelemetry/auto-instrumentations-node');
@@ -7,11 +8,12 @@
   const { Resource } = require('@opentelemetry/resources');
   const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
 
-  const { SERVICE_NAME, SERVICE_ENVIRONMENT } = require('./config');
-  
-  export const initTracing = () => {
+  const SERVICE_NAME = process.env.SERVICE_NAME || 'nodejs-service';
+  const SERVICE_ENVIRONMENT = process.env.SERVICE_ENVIRONMENT || 'development';
+  console.log('Initializing tracing...');
+
   const exporterOptions = {
-    url: 'https://signoz.shared.morado.mx:4318/v1/traces'
+    url: 'http://182.100.0.35:4318/v1/traces'
   }
   
   const traceExporter = new OTLPTraceExporter(exporterOptions);
@@ -34,4 +36,3 @@
       .catch((error) => console.log('Error terminating tracing', error))
       .finally(() => process.exit(0));
       });
-}
