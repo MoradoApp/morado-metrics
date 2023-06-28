@@ -9,6 +9,7 @@
 
   const { SERVICE_NAME, SERVICE_ENVIRONMENT } = require('./config');
   
+  export default function initTracing() {
   const exporterOptions = {
     url: 'https://signoz.shared.morado.mx:4318/v1/traces'
   }
@@ -33,3 +34,4 @@
       .catch((error) => console.log('Error terminating tracing', error))
       .finally(() => process.exit(0));
       });
+}
