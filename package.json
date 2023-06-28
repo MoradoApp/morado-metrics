@@ -4,8 +4,7 @@
   "description": "Libreria para monitorear el estado de los servicios de morado.",
   "main": "index.js",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MoradoApp/morado-metrics.git"
+    "url": "https://github.com/MoradoApp/morado-metrics.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
