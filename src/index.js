@@ -9,7 +9,7 @@
 
   const { SERVICE_NAME, SERVICE_ENVIRONMENT } = require('./config');
   
-  export default function initTracing() {
+  export const initTracing = () => {
   const exporterOptions = {
     url: 'https://signoz.shared.morado.mx:4318/v1/traces'
   }
