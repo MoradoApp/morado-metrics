@@ -25,6 +25,7 @@
       instrumentations: [getNodeAutoInstrumentations()],
       resource: new Resource({
         [SemanticResourceAttributes.SERVICE_NAME]: `${SERVICE_NAME}-${SERVICE_ENVIRONMENT}`,
+        [SemanticResourceAttributes.DEPLOYMENT_ENVIRONMENT]: `${SERVICE_ENVIRONMENT}`,
       })
     });
     
