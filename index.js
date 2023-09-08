@@ -8,6 +8,13 @@
   const { Resource } = require('@opentelemetry/resources');
   const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
 
+  const { HttpInstrumentation } = require('@opentelemetry/instrumentation-http');
+  const { PgInstrumentation } = require('@opentelemetry/instrumentation-pg');
+  const { ExpressInstrumentation } = require('@opentelemetry/instrumentation-express');
+  const { NestInstrumentation } = require('@opentelemetry/instrumentation-nestjs-core');
+  const { WinstonInstrumentation } = require('@opentelemetry/instrumentation-winston');
+
+
   const SERVICE_NAME = process.env.APP_NAME || '';
   const SERVICE_ENVIRONMENT = process.env.ENVIRONMENT || '';
   const METRICS = process.env.METRICS || '';
@@ -22,7 +29,14 @@
     const traceExporter = new OTLPTraceExporter(exporterOptions);
     const sdk = new opentelemetry.NodeSDK({
       traceExporter,
-      instrumentations: [getNodeAutoInstrumentations()],
+      instrumentations: [
+        new HttpInstrumentation(),
+        new PgInstrumentation(),
+        new ExpressInstrumentation(),
+        new NestInstrumentation(),
+        new WinstonInstrumentation(),
+        // getNodeAutoInstrumentations()
+      ],
       resource: new Resource({
         [SemanticResourceAttributes.SERVICE_NAME]: `${SERVICE_NAME}-${SERVICE_ENVIRONMENT}`,
         [SemanticResourceAttributes.DEPLOYMENT_ENVIRONMENT]: `${SERVICE_ENVIRONMENT}`,
